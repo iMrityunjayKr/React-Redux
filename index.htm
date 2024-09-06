@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>test</title>
+</head>
+<body>
+  <div style="background-color: green;" id="root">
+
+  </div>
+  
+</body>
+<script>
+  const toDoInput = document.createElement('input')
+  toDoInput.setAttribute("type", "text")
+  toDoInput.setAttribute("placeholder", "Enter Task To Do Here")
+  toDoInput.style.marginRight = "10px"
+  toDoInput.style.width = "200px"
+
+  const selectDateofTask = document.createElement('input')
+  selectDateofTask.setAttribute("type", "date")
+  selectDateofTask.style.marginRight = "10px"
+
+
+  const addTask = document.createElement('button')
+  addTask.textContent = 'Add Task'  
+  addTask.style.backgroundColor = "green"
+  addTask.style.color = "white"
+  addTask.style.padding = "10px 20px"
+  addTask.style.border = "none"
+  addTask.style.cursor = "pointer"
+  addTask.style.marginTop = "10px"
+  addTask.style.display = "inline"
+  
+
+  const rootElement = document.getElementById('root')
+  rootElement.appendChild(toDoInput)
+  rootElement.appendChild(selectDateofTask)
+  rootElement.appendChild(addTask)
+  function addNewTask(){
+    const taskText = toDoInput.value
+    const taskDate = selectDateofTask.value
+    if(taskText ==="" || taskDate === ""){
+      alert("Please enter both task and date")
+      return
+    }
+    const taskdiv = document.createElement('div')
+    taskdiv.textContent = `Task: ${taskText} | Due Date : ${taskDate}`
+    taskdiv.style.border = "1px solid white"
+    taskdiv.style.margin = "10px"
+    taskdiv.style.padding = "5px"
+    taskdiv.style.backgroundColor = "lightgray"
+    rootElement.appendChild(taskdiv)
+
+    toDoInput.value = ""
+    selectDateofTask.value = ""
+  }
+  addTask.addEventListener('click', addNewTask)
+
+</script>
+</html>
